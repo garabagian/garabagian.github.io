@@ -10,7 +10,9 @@ class prvTree {
     public y = 300,
     public vx = 1,
     public vy = 20,
-    public radius = 25,
+    public radius = 40,
+    public score = 0,
+    public highScore = 0,
     private readonly color = 'blue'
   ) {}
 
@@ -35,6 +37,7 @@ class prvTree {
     // Colors and fills the ball
     ctx.fillStyle = this.color;
     ctx.fill();
+
   }
 
   /**
@@ -55,6 +58,7 @@ class prvTree {
     // If the ball would fly off the top of the screen in the next step, or if would sink below it...
     if (this.y + this.vy + this.radius> canvasHeight || this.y + this.vy + this.radius < 0) {
       // ...then reverse the direction of the ball's vertical velocity
+      this.score = 0;
       this.vy = -this.vy;
     }
 
@@ -126,9 +130,14 @@ export class Tree {
     console.log(x + " , " + y);
     this.clicky.x = x;
     this.clicky.y = y;
-    //this.clicky.draw(this.ctx);
+
+
     if(x>=ball.x-ball.radius && x<=ball.x+ball.radius && y>=ball.y-ball.radius && y<=ball.y+ball.radius){
       ball.vy -= 20;
+      ball.score++;
+      if(ball.score > ball.highScore){
+        ball.highScore = ball.score;
+      }
     }
   }
 
@@ -141,10 +150,15 @@ export class Tree {
    */
   draw() {
     this.ctx.clearRect(0, 0, document.documentElement.clientWidth, document.documentElement.clientHeight); // erase the old ball
-
+    this.ctx.font = "30px Comic Sans MS";
+    this.ctx.fillText("Score: " + this.ball.score, 20, 40);
+    this.ctx.font = "12px Comic Sans MS";
+    this.ctx.fillText("High Score: " + this.ball.highScore, 24, 60);
     this.ball.draw(this.ctx); // draw the ball in the new position
-    this.ball.bounce(document.documentElement.clientWidth, document.documentElement.clientHeight); // calculate the ball's new position
-    //this.clicky.draw(this.ctx);
+    this.ball.bounce(this.canvasWidth, this.canvasHeight); // calculate the ball's new position
+
+
+
     window.requestAnimationFrame(() => this.draw()); // repeat the draw step when the window requests a frame
   }
 }

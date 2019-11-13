@@ -19,6 +19,8 @@ platformBrowserDynamic().bootstrapModule(AppModule)
     window.addEventListener("resize", (e: Event) => {
       treeCanvas.width = document.documentElement.clientWidth;
       treeCanvas.height = document.documentElement.clientHeight;
+      check.canvasWidth = treeCanvas.width;
+      check.canvasHeight= treeCanvas.height;
       console.log(treeCanvas.width + " , " + treeCanvas.height);
       if(check.ball.y+check.ball.radius>=treeCanvas.height){
         check.ball.y=treeCanvas.height-check.ball.radius;
