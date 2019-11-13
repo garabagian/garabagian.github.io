@@ -149,7 +149,7 @@ export class Tree {
    * Draw step of the animation
    */
   draw() {
-    this.ctx.clearRect(0, 0, document.documentElement.clientWidth, document.documentElement.clientHeight); // erase the old ball
+    this.ctx.clearRect(0, 0, this.canvasWidth, this.canvasHeight); // erase the old ball
     this.ctx.font = "30px Comic Sans MS";
     this.ctx.fillText("Score: " + this.ball.score, 20, 40);
     this.ctx.font = "12px Comic Sans MS";
