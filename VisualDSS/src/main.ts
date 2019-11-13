@@ -16,6 +16,7 @@ platformBrowserDynamic().bootstrapModule(AppModule)
     treeCanvas.width = document.documentElement.clientWidth;
     treeCanvas.height = document.documentElement.clientHeight;
     var check = new Tree(treeCanvas);
+    
     window.addEventListener("resize", (e: Event) => {
       treeCanvas.width = document.documentElement.clientWidth;
       treeCanvas.height = document.documentElement.clientHeight;
