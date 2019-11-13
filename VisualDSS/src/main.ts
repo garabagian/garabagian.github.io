@@ -23,6 +23,9 @@ platformBrowserDynamic().bootstrapModule(AppModule)
       if(check.ball.y+check.ball.radius>=treeCanvas.height){
         check.ball.y=treeCanvas.height-check.ball.radius;
       }
+      if(check.ball.x+check.ball.radius>=treeCanvas.width){
+        check.ball.x=treeCanvas.width-check.ball.radius;
+      }
     }, false);
 
 
