@@ -102,7 +102,7 @@ export class Tree {
   public ctx: CanvasRenderingContext2D; // HTML Canvas's 2D context
   public canvasWidth: number; // width of the canvas
   public canvasHeight: number; // height of the canvas
-  public ball = new prvTree(700, 700); // create a new ball with x and y 50 and other properties default
+  public ball = new prvTree(document.documentElement.clientWidth/2, document.documentElement.clientHeight/2); // create a new ball with x and y 50 and other properties default
   private readonly clicky = new Node();
 
   /**
